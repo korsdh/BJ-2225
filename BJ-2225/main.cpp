@@ -16,4 +16,14 @@ int main() {
 	for (int i = 0; i <= N; i++) {
 		dp[0][i] = 0;
 	}
+	for (int i = 2; i <= K; i++) {
+		for (int j = 0; j <= N; j++) {
+			for (int o = 0; o <= j; o++) {
+				dp[i][j] += dp[i - 1][o];
+			}
+			dp[i][j] = dp[i][j] % 1000000000;
+		}
+	}
+	cout << dp[K][N] << endl;
+	return 0;
 }
